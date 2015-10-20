@@ -340,6 +340,7 @@
                             "vhd": {
                                 "Uri": "[variables('dataDisk1VhdName')]"
                             },
+                            "caching": "ReadOnly",
                             "createOption": "Empty"
                         }
                     ]                    
