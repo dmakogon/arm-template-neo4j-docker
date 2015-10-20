@@ -79,24 +79,6 @@
                     "description": "Size of the Virtual Machine."
                 }
             },
-            "adminUsername": {
-                "type": "string",
-                "metadata": {
-                    "description": "Username for sample VM"
-                }
-            },
-            "adminPassword": {
-                "type": "securestring",
-                "metadata": {
-                    "description": "User password for sample VM"
-                }
-            },
-            "newStorageAccountName": {
-                "type": "string",
-                "metadata": {
-                    "description": "Stoarge Account Name for VM Disk"
-                }
-            },
             "storageAccountType": {
                 "type": "string",
                 "allowedValues": [
@@ -148,14 +130,14 @@
             "storageAccountType": "[parameters('storageAccountType')]",
             "publicIPAddressName": "[concat(parameters('vmName'),parameters('publicIPAddressName'))]",
             "publicIPAddressType": "Dynamic",
-            "vmStorageAccountContainerName": "vhds",
+            "vmStorageAccountContainerName": "containernames",
             "vmName": "[parameters('vmName')]",
             "vmSize": "[parameters('vmSize')]",
             "virtualNetworkName": "MyVNET",
             "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
             "nsgID": "[resourceId('Microsoft.Network/networkSecurityGroups',variables('nsgName'))]",
             "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
-            "dataDisk1VhdName": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('vmName'),'dataDisk1.vhd')]"
+            "dataDisk1containernameName": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('vmName'),'dataDisk1.vhd')]"
 
         },
         "resources": [
