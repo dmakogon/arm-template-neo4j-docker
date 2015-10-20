@@ -335,7 +335,7 @@
                     "dataDisks": [
                         {
                             "name": "datadisk1",
-                            "diskSizeGB": "10",
+                            "diskSizeGB": "128",
                             "lun": 0,
                             "vhd": {
                                 "Uri": "[variables('dataDisk1VhdName')]"
