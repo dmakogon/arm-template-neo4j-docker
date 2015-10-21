@@ -71,28 +71,12 @@
                     "Standard_D11",
                     "Standard_D12",
                     "Standard_D13",
-                    "Standard_D14"
+                    "Standard_D14",
+                    "Standard_DS2",
+                    "Standard_DS14"
                 ],
                 "metadata": {
                     "description": "Size of the Virtual Machine."
-                }
-            },
-            "adminUsername": {
-                "type": "string",
-                "metadata": {
-                    "description": "Username for sample VM"
-                }
-            },
-            "adminPassword": {
-                "type": "securestring",
-                "metadata": {
-                    "description": "User password for sample VM"
-                }
-            },
-            "newStorageAccountName": {
-                "type": "string",
-                "metadata": {
-                    "description": "Stoarge Account Name for VM Disk"
                 }
             },
             "storageAccountType": {
@@ -143,7 +127,7 @@
             "addressPrefix": "10.0.0.0/16",
             "subnetName": "Subnet",
             "subnetPrefix": "10.0.0.0/24",
-            "storageAccountType": "Standard_LRS",
+            "storageAccountType": "[parameters('storageAccountType')]",
             "publicIPAddressName": "[concat(parameters('vmName'),parameters('publicIPAddressName'))]",
             "publicIPAddressType": "Dynamic",
             "vmStorageAccountContainerName": "vhds",
@@ -333,11 +317,12 @@
                     "dataDisks": [
                         {
                             "name": "datadisk1",
-                            "diskSizeGB": "10",
+                            "diskSizeGB": "128",
                             "lun": 0,
                             "vhd": {
                                 "Uri": "[variables('dataDisk1VhdName')]"
                             },
+                            "caching": "ReadOnly",
                             "createOption": "Empty"
                         }
                     ]                    
@@ -387,7 +372,7 @@
                 "settings": {
                     "compose": {
                         "neo4j": {
-                            "image": "tpires/neo4j",
+                            "image": "neo4j/neo4j",
                             "ports": ["7474:7474", "7473:7473"],
                             "volumes" : ["/datadisk:/var/lib/neo4j/data"]
                         }
